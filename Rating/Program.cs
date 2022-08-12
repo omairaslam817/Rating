@@ -12,19 +12,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var AllowedOrigins = "AllowedOrigins";
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(AllowedOrigins,
-                          builder =>
-                          {
-                              builder.WithOrigins("http://localhost:4200")
-                                                  .AllowAnyMethod()
-                                                                   .AllowCredentials()
-                                                                    .AllowAnyHeader();
-                          });
-});
-
+var AllowedOrigins = "_myAllowedOrigins";
+builder.Services.AddCors(o => o.AddPolicy(AllowedOrigins,
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyMethod()
+                                 .AllowAnyHeader();
+                      }));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
