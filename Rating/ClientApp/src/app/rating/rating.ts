@@ -1,4 +1,4 @@
-export interface  Rating {
-    comment:string,
-    rating :string
+export class  Rating {
+    comment:string ="";
+    rating :string =""; 
 }

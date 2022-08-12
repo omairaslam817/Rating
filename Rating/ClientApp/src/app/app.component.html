@@ -1,6 +1,29 @@
-<body>
-  <app-nav-menu></app-nav-menu>
-  <div class="container">
-    <router-outlet></router-outlet>
+<form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
+  <textarea formControlName="comment"></textarea>
+  
+  <div class="cont">
+    <div class="stars">
+      <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>
+    </div>
+    <div>Rating: {{form.value.rating1}}</div>
+    <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
   </div>
-</body>
+  
+  <!-- <div class="cont">
+      <div class="stars">
+        <ngx-star-rating formControlName="rating2" [id]="'rating2'" [disabled] ="true"></ngx-star-rating>
+      </div>
+      <div>Rating(Disabled): {{form.value.rating2}}</div>
+    </div> -->
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button>
+  </form>
+  
+  
+  <!-- <div class="cont">
+    <div class="stars">
+      <ngx-star-rating [(ngModel)]="rating3" [id]="'rating3'" ></ngx-star-rating >
+    </div>
+    <div>Rating: {{ rating3 }}</div>
+  </div> -->
+    <router-outlet></router-outlet>
+
