@@ -13,9 +13,7 @@ export class ServiceService {
     })
   }  
 
-  formData: Rating= new Rating();
   readonly baseURL = environment.baseUrl;
-  ratingList : Rating[]=[]; 
   constructor(private http: HttpClient) { }
   getData(){  
        
