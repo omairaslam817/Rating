@@ -1,27 +1,27 @@
-<div class="container mt-2">
+    <div class="container mt-2">
 
-    <form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
-      <div class="form-group">
-        <textarea class="form-control" [ngClass]="{ 'is-invalid': ratingform?.comment?.errors }" placeholder="enter comment" formControlName="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
-        <div *ngIf="comment?.invalid && (comment?.dirty || comment?.touched)"
-        class="alert alert-danger my-2">
-    
-      <div *ngIf="comment?.errors?.['required']">
-        Comment is required.
-      </div>
-      <div *ngIf="comment?.errors?.['pattern']">
-        comment must be at alfhabets.
-      </div>  
-    </div>
-      </div>
-      <div class="cont">
-        <div class="stars">
-          <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>
-          
+        <form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
+          <div class="form-group">
+            <textarea class="form-control" [ngClass]="{ 'is-invalid': ratingform?.comment?.errors }" placeholder="enter comment" formControlName="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <div *ngIf="comment?.invalid && (comment?.dirty || comment?.touched)"
+            class="alert alert-danger my-2">
+        
+          <div *ngIf="comment?.errors?.['required']">
+            Comment is required.
+          </div>
+          <div *ngIf="comment?.errors?.['pattern']">
+            comment must be  alfhabets.
+          </div>  
         </div>
-        <div>Rating: {{form.value.rating}}</div>
+          </div>
+          <div class="cont">
+            <div class="stars">
+              <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>
+              
+            </div>
+            <div>Rating: {{form.value.rating}}</div>
+          </div>
+      
+          <button class="btn btn-primary text-center" type="submit" [disabled]="!form.valid">Save</button>
+        </form>
       </div>
-  
-      <button class="btn btn-primary text-center" type="submit" [disabled]="!form.valid">Save</button>
-    </form>
-  </div>
