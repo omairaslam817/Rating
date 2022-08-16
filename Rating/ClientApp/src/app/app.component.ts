@@ -9,11 +9,9 @@ import { ServiceService } from './service/service.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  rating3: number;
   public form: FormGroup;
 
   constructor(private fb: FormBuilder,private ratingService:ServiceService,private router: Router){
-    this.rating3 = 0;
     this.form = this.fb.group({
       rating: ['', Validators.required],
       comment:[]

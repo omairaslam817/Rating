@@ -1,0 +1,15 @@
+::ng-deep ngx-star-rating{
+
+label.star[_ngcontent-ng-cli-universal-c48] {
+    padding: 10px;
+    font-size: 29px;
+    color: #585ea9;
+    transition: all .5s;
+}
+input.star:checked ~ label.star:before {
+    color: rgb(194, 43, 199) !important;
+  }
+  .ng-invalid:not(form)  {
+    border: 2px solid red /* red */
+  }
+}

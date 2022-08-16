@@ -1,19 +1,3 @@
-<div class="container mt-2">
-
-  <form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
-    <div class="form-group">
-      <textarea class="form-control" placeholder="enter comment" formControlName="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-    <div class="cont">
-      <div class="stars">
-        <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>
-      </div>
-      <div>Rating: {{form.value.rating1}}</div>
-      <p>form is valid: {{ form.valid ? 'true' : 'false' }}</p>
-    </div>
-
-    <button class="btn btn-primary text-center" type="submit" [disabled]="!form.valid">Save</button>
-  </form>
-</div>
+<app-rating></app-rating>
 <router-outlet></router-outlet>
 
