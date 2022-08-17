@@ -15,25 +15,13 @@ namespace Rating.Controllers
         [HttpGet]
         public async Task<List<RatingEntity>> Get() => await _ratingService.GetAsync();
 
-        //[HttpGet("{id:length(1)}")]
-        //public async Task<ActionResult<RatingEntity>> Get(string id)
-        //{
-        //    var employee = await _ratingService.GetAsync(id);
-
-        //    if (employee is null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return employee;
-        //}
 
         [HttpPost]
-        public async Task<IActionResult> Post(RatingEntity newEmployee)
+        public async Task<IActionResult> Post(RatingEntity rating)
         {
             await _ratingService.CreateAsync(null);
 
-            return NoContent();
+            return Ok();
         }
 
     }
