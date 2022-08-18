@@ -15,6 +15,12 @@ import { ErrorIntercept } from './interceptor/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { RatingComponent } from './rating/rating.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ratingReducer } from './store/rating.reducer'; 
+import { environment } from '../environments/environment';
+import { RatingEffect } from './store/rating.effect';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,10 @@ import { RatingComponent } from './rating/rating.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    ]), StoreModule.forRoot({}, {}),
+     EffectsModule.forRoot([RatingEffect]),
+      StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+      StoreModule.forFeature('myRatingStore',ratingReducer) //register feature selector name with reducer ratingReducer
   ],
   providers: [ServiceService,{
     provide: HTTP_INTERCEPTORS,
@@ -47,5 +56,6 @@ import { RatingComponent } from './rating/rating.component';
   }
    ],
   bootstrap: [AppComponent]
-})
+}) 
 export class AppModule { }
+  

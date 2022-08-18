@@ -21,7 +21,7 @@ namespace Rating.Controllers
         {
             await _ratingService.CreateAsync(null);
 
-            return Ok();
+            return NoContent();
         }
 
     }
