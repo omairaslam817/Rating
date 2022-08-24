@@ -1,40 +1,19 @@
-    <!-- <div class="container mt-2">
 
-        <form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
-          <div class="form-group">
-            <textarea class="form-control" [ngClass]="{ 'is-invalid': ratingform?.comment?.errors }" placeholder="enter comment" formControlName="comment" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <div *ngIf="comment?.invalid && (comment?.dirty || comment?.touched)"
-            class="alert alert-danger my-2">
-        
-          <div *ngIf="comment?.errors?.['required']">
-            Comment is required.
-          </div>
-          <div *ngIf="comment?.errors?.['pattern']">
-            comment must be  alfhabets.
-          </div>  
+      <div class=" my-4 row text-center">
+        <div class="col col-md-4 offset-md-4">
+        <a routerLink="/add-rating" class="btn btn-dark">Add rating</a>
         </div>
-          </div>
-          <div class="cont">
-            <div class="stars">
-              <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>
-              
-            </div>
-            <div>Rating: {{form.value.rating}}</div>
-          </div>
-      
-          <button class="btn btn-primary text-center" type="submit" [disabled]="!form.valid">Save</button>
-        </form>
-      </div> -->
+      </div>
       <div class="container mt-2">
         <div class="row row-cols-1 row-cols-md-3 g-4">
           <div class="col" *ngFor="let rating of ratings$ | async">
             <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{ rating.comment }}</h5>
+              <div class="card-body bg-danger">
+                <h5 class="card-title">Comment:{{ rating.comment }}</h5>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{ rating.rating }}</li>
-                <li class="list-group-item">{{ rating.comment }}</li>
+                <li class="list-group-item">Rating : {{ rating.rating }}</li>
+                <li class="list-group-item">Comment:{{ rating.comment }}</li>
               </ul>
             </div>
           </div>

@@ -19,7 +19,7 @@ namespace Rating.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(RatingEntity rating)
         {
-            await _ratingService.CreateAsync(null);
+            await _ratingService.CreateAsync(rating);
 
             return NoContent();
         }

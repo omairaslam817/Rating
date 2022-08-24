@@ -22,6 +22,7 @@ import { ratingReducer } from './store/rating.reducer';
 import { environment } from '../environments/environment';
 import { RatingEffect } from './store/rating.effect';
 import { RatingAddPageComponent } from './rating/add/rating-add-page/rating-add-page.component';
+import { appReducer } from './shared/store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { RatingAddPageComponent } from './rating/add/rating-add-page/rating-add-
       { path: 'counter', component: CounterComponent },
       { path: 'add-rating', component: RatingAddPageComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    ]), StoreModule.forRoot({}, {}),
+    ]), StoreModule.forRoot({appState:appReducer}),
      EffectsModule.forRoot([RatingEffect]),
       StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
       StoreModule.forFeature('myRatingStore',ratingReducer) //register feature selector name with reducer ratingReducer

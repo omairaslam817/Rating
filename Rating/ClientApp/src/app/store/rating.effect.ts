@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { createEffect, Actions, ofType } from "@ngrx/effects";
 import { select, Store } from "@ngrx/store";
-import { EMPTY, map, mergeMap, withLatestFrom } from "rxjs";
+import { EMPTY, map, mergeMap, withLatestFrom,switchMap } from "rxjs";
 import { ServiceService } from "../service/service.service";
-import { invokeRatingAPI, ratingsFetchApiSuccess } from "../store/rating.action";
+import { setAPIStatus } from "../shared/store/app.action";
+import { invokeRatingAPI, invokeSaveNeRatingAPI, ratingsFetchApiSuccess, saveNewRatingAPISucess } from "../store/rating.action";
 import { selectRatings } from "../store/rating.selector";
 
 
@@ -32,6 +33,26 @@ export class RatingEffect {
     }
   );
 
+  saveNewRating$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(invokeSaveNeRatingAPI),
+      switchMap((action) => {
+        this.store.dispatch(
+          setAPIStatus({ apiStatus: { apiResponseMessage: '', apiStatus: '' } })
+        );
+        return this.ratingService.saveData(action.newRating).pipe(
+          map((data) => {
+            this.store.dispatch(
+              setAPIStatus({
+                apiStatus: { apiResponseMessage: '', apiStatus: 'success' },
+              })
+            );
+            return saveNewRatingAPISucess({ newRating: data });
+          })
+        );
+      })
+    );
+  });
 }
 // The 'RatingEffect' class is just an injectable service. In the next steps, we write actions
 // and trigger effects to invoke the API calls in this service.

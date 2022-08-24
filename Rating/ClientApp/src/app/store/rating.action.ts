@@ -10,14 +10,14 @@ export const ratingsFetchApiSuccess = createAction(
     props<{allRatings:Rating[]}>()
 );
 
-export const invokeSaveNewBookAPI = createAction(
-    '[Ratings Api] Inovke save new book api',
-    props<{ newBook: Rating }>()
+
+  export const invokeSaveNeRatingAPI = createAction(
+    '[Ratings Api] Invoke Ratings save Api',
+    props<{newRating:Rating}>()
   );
-   
-  export const saveNewBookAPISucess = createAction(
+  export const saveNewRatingAPISucess = createAction (
     '[Ratings Api] save new book api success',
-    props<{ newBook: Rating }>()
+    props<{newRating:any}>()
   );
 //The 'Actions' represents the events raised by the component
 // to communicate either with reducers or effects to update the data to store. Let's create a 'Rating' action.
