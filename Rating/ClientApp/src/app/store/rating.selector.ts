@@ -1,7 +1,7 @@
 import { createFeatureSelector } from "@ngrx/store";
 import { Rating } from "../rating/rating";
 
-export const selectRatings = createFeatureSelector<Rating>('myRatingStore');
+export const selectRatings = createFeatureSelector<Rating[]>('myRatingStore');
 // The 'createFeatureSelector' loads from the '@ngrx/store'.
 // The 'createFeatureSelector' is used to fetch all the data from our feature module(eg: 'Ratings/App' module).
 //Here the name of our selector 'myRatingStore'

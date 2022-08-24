@@ -21,6 +21,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ratingReducer } from './store/rating.reducer'; 
 import { environment } from '../environments/environment';
 import { RatingEffect } from './store/rating.effect';
+import { RatingAddPageComponent } from './rating/add/rating-add-page/rating-add-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RatingEffect } from './store/rating.effect';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    RatingComponent
+    RatingComponent,
+    RatingAddPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,6 +45,7 @@ import { RatingEffect } from './store/rating.effect';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
+      { path: 'add-rating', component: RatingAddPageComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ]), StoreModule.forRoot({}, {}),
      EffectsModule.forRoot([RatingEffect]),

@@ -16,7 +16,7 @@ export class ServiceService {
   readonly baseURL = environment.baseUrl;
   constructor(private http: HttpClient) { }
   getData(){  
-       
+       debugger
     return this.http.get<Rating[]>(this.baseURL+'/api/Rating');     
   }  
   

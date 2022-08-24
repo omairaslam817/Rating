@@ -18,8 +18,19 @@ namespace Rating.Services
             _ratingCollection = mongoDatabase.GetCollection<RatingEntity>("MyRating");
         }
 
-        public async Task<List<RatingEntity>> GetAsync() =>
-            await _ratingCollection.Find(_ => true).ToListAsync();
+        public async Task<List<RatingEntity>> GetAsync()
+        {
+            try
+            {
+              return  await _ratingCollection.Find(_ => true).ToListAsync();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
 
 
         public async Task CreateAsync(RatingEntity rating) =>

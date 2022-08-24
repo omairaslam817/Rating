@@ -25,3 +25,18 @@
           <button class="btn btn-primary text-center" type="submit" [disabled]="!form.valid">Save</button>
         </form>
       </div> -->
+      <div class="container mt-2">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col" *ngFor="let rating of ratings$ | async">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ rating.comment }}</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ rating.rating }}</li>
+                <li class="list-group-item">{{ rating.comment }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
