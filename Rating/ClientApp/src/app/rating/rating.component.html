@@ -12,6 +12,13 @@
                 <h5 class="card-title">Comment:{{ rating.comment }}</h5>
               </div>
               <ul class="list-group list-group-flush">
+                <div class="cont">
+                  <div class="stars">
+                    <ngx-star-rating [(ngModel)]="rating.rating" [id]="'rating'"></ngx-star-rating>
+                    
+                  </div>
+                  <div>Rating: {{form.value.rating}}</div>
+                </div>
                 <li class="list-group-item">Rating : {{ rating.rating }}</li>
                 <li class="list-group-item">Comment:{{ rating.comment }}</li>
               </ul>

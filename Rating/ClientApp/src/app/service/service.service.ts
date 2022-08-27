@@ -15,12 +15,11 @@ export class ServiceService {
 
   readonly baseURL = environment.baseUrl;
   constructor(private http: HttpClient) { }
-  getData(){  
-       debugger
+  getData(){  debugger
     return this.http.get<Rating[]>(this.baseURL+'/api/Rating');     
   }  
   
   saveData(rating:Rating){  
-    return this.http.post<Rating[]>(this.baseURL+'/api/Rating', rating,this.httpOptions)    
+    return this.http.post<Rating>(this.baseURL+'/api/Rating', rating,this.httpOptions)    
   }  
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { ServiceService } from '../service/service.service';
 import { Rating } from './rating';
@@ -22,7 +22,8 @@ export class RatingComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private ratingService: ServiceService
     , private router: Router,
-    private store:Store) {
+    private store:Store,
+    private route: ActivatedRoute) {
     this.form = this.fb.group({
       rating: ['', Validators.required],
       comment: ['', Validators.pattern('^[a-zA-Z ]*$')]
@@ -31,7 +32,8 @@ export class RatingComponent implements OnInit {
 ratings$ = this.store.pipe(select(selectRatings))
 
   ngOnInit(): void {
-    this.store.dispatch(invokeRatingAPI())
+    this.route.data.subscribe(data => console.log('Data :', data));
+    //this.store.dispatch(invokeRatingAPI())
   }
 
   onFormSubmit(form: FormGroup) {

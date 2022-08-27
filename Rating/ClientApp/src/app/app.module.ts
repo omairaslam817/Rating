@@ -23,6 +23,7 @@ import { environment } from '../environments/environment';
 import { RatingEffect } from './store/rating.effect';
 import { RatingAddPageComponent } from './rating/add/rating-add-page/rating-add-page.component';
 import { appReducer } from './shared/store/app.reducer';
+import { RatingReslover } from './shared/resolver/rating.resolver';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,10 @@ import { appReducer } from './shared/store/app.reducer';
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
+      { path: 'rating', component: RatingComponent, resolve: {
+        resolver:RatingReslover
+      }
+     },
       { path: 'add-rating', component: RatingAddPageComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ]), StoreModule.forRoot({appState:appReducer}),

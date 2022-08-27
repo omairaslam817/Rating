@@ -17,7 +17,6 @@ export class RatingEffect {
     ){}
     loadAllBooks$:any = createEffect(() =>
     {
-        debugger
             return this.actions$.pipe(
                 ofType(invokeRatingAPI),
                 withLatestFrom(this.store.pipe(select(selectRatings))),  //The 'withLatestFrom' loads from the 'rxjs'. It outputs the latest result of an observable. Here 'this.store.pipe(select(selectBooks))' trying to fetch the data from the store if already exist.
@@ -33,7 +32,7 @@ export class RatingEffect {
     }
   );
 
-  saveNewRating$ = createEffect(() => {
+  saveNewRating$:any= createEffect(() => {
     return this.actions$.pipe(
       ofType(invokeSaveNeRatingAPI),
       switchMap((action) => {

@@ -39,7 +39,7 @@ export class RatingAddPageComponent implements OnInit {
         this.store.dispatch( 
           setAPIStatus({ apiStatus: { apiResponseMessage: '', apiStatus: '' } })
         );
-         this.router.navigate(['/']);
+         this.router.navigate(['/rating']);
       }
     });
   }
